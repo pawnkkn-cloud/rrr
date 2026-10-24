@@ -1,0 +1,434 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SAT Reading &amp; Writing 100</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: answer-sheet feel. Passage on paper (serif), controls in sans, bubbles like a scan sheet. One column on phone, passage | question split on wide screens. */
+:root{
+  --paper:#F5F6F8; --surface:#FFFFFF; --ink:#1A2130; --muted:#5A6375; --line:#D9DEE7;
+  --accent:#1D4E9E; --accent-soft:#E7EDF8; --mark:#D9930D; --mark-soft:#FBF1DC;
+  --good:#1E7A4C; --good-soft:#E3F3EA; --bad:#B3312C; --bad-soft:#F8E5E4;
+  --f-ui:"IBM Plex Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-read:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-num:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#10141B; --surface:#171C25; --ink:#E5E8EE; --muted:#9AA3B4; --line:#2A3241;
+  --accent:#86A8EE; --accent-soft:#1D2840; --mark:#F0B444; --mark-soft:#3A2F17;
+  --good:#52C48E; --good-soft:#15301F; --bad:#EE7570; --bad-soft:#3A1C1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#10141B; --surface:#171C25; --ink:#E5E8EE; --muted:#9AA3B4; --line:#2A3241;
+  --accent:#86A8EE; --accent-soft:#1D2840; --mark:#F0B444; --mark-soft:#3A2F17;
+  --good:#52C48E; --good-soft:#15301F; --bad:#EE7570; --bad-soft:#3A1C1B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:12px;padding-block:10px;flex-wrap:wrap}
+.brand{font-weight:700;letter-spacing:.01em;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{font-weight:500;color:var(--muted);margin-left:6px}
+.timer{font-family:var(--f-num);font-variant-numeric:tabular-nums;font-size:15px;padding:4px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.timer.low{color:var(--bad);border-color:var(--bad)}
+.btn{border:1px solid var(--line);background:var(--surface);padding:8px 14px;border-radius:8px;font-weight:600}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn.ghost{background:transparent}
+.btn[disabled]{opacity:.4;cursor:default}
+
+/* start */
+.start{padding-block:40px 60px;display:grid;gap:28px}
+.start h1{font-family:var(--f-read);font-size:clamp(30px,6vw,46px);line-height:1.1;margin:0;text-wrap:balance}
+.start .lede{color:var(--muted);max-width:60ch;margin:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.mode{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:18px;text-align:left;display:grid;gap:6px}
+.mode b{font-size:17px}
+.mode span{color:var(--muted);font-size:14px}
+.mode.on{border-color:var(--accent);background:var(--accent-soft)}
+.blueprint{border-top:1px solid var(--line);padding-top:20px}
+.blueprint h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.bp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 24px}
+.bp div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding-block:6px}
+.bp em{font-style:normal;font-family:var(--f-num);color:var(--muted)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.chk{display:flex;gap:8px;align-items:center;color:var(--muted)}
+
+/* question */
+.qhead{display:flex;align-items:center;gap:10px;padding-block:14px 0;flex-wrap:wrap}
+.qnum{font-family:var(--f-num);font-weight:600;background:var(--ink);color:var(--surface);border-radius:4px;padding:2px 9px}
+.skill{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+.flag{margin-left:auto;border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:5px 12px;font-size:13px;font-weight:600}
+.flag.on{background:var(--mark-soft);border-color:var(--mark);color:var(--ink)}
+.flag svg{vertical-align:-2px;margin-right:4px}
+.split{display:grid;grid-template-columns:1fr;gap:18px;padding-block:14px 120px}
+@media(min-width:860px){.split{grid-template-columns:1.1fr 1fr;gap:32px}.passage{border-right:1px solid var(--line);padding-right:32px}}
+.passage{font-family:var(--f-read);font-size:17px;line-height:1.65;min-width:0}
+.passage p{margin:0 0 .8em}
+.passage ul{margin:.3em 0 0;padding-left:1.2em}
+.passage li{margin-bottom:.35em}
+.blank{display:inline-block;min-width:4.2em;border-bottom:2px solid var(--ink);height:1em;vertical-align:-2px}
+.tbl{overflow-x:auto;margin:.4em 0 1em}
+.tbl table{border-collapse:collapse;font-family:var(--f-ui);font-size:14px;font-variant-numeric:tabular-nums;min-width:260px}
+.tbl caption{text-align:left;font-weight:600;padding-bottom:6px}
+.tbl th,.tbl td{border:1px solid var(--line);padding:6px 12px;text-align:left}
+.tbl th{background:var(--paper)}
+.qside{min-width:0}
+.qtext{font-weight:600;margin:0 0 14px;font-size:15.5px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:stretch;gap:0;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.opt .pick{flex:1;display:flex;gap:12px;align-items:flex-start;text-align:left;border:0;background:transparent;padding:11px 12px;min-width:0}
+.bub{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-family:var(--f-num);font-size:13px;font-weight:600}
+.otext{padding-top:3px;min-width:0;overflow-wrap:anywhere}
+.strike{flex:none;border:0;border-left:1px solid var(--line);background:transparent;width:42px;color:var(--muted);font-size:12px;font-family:var(--f-num)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .bub{background:var(--ink);color:var(--surface)}
+.opt.x .otext{text-decoration:line-through;color:var(--muted)}
+.opt.x .bub{opacity:.45}
+.opt.ok{border-color:var(--good);background:var(--good-soft)}
+.opt.ok .bub{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.no{border-color:var(--bad);background:var(--bad-soft)}
+.opt.no .bub{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.expl{margin-top:16px;border-radius:10px;padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+.expl b{display:block;margin-bottom:4px}
+.expl.ok b{color:var(--good)} .expl.no b{color:var(--bad)}
+
+/* bottom nav */
+.foot{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.foot .wrap{display:flex;align-items:center;gap:10px;padding-block:10px}
+.navbtn{margin:0 auto;border:1px solid var(--line);background:var(--ink);color:var(--surface);border-radius:8px;padding:8px 14px;font-weight:600;font-family:var(--f-num);font-size:14px}
+
+/* grid sheet */
+.sheet{position:fixed;inset:0;z-index:20;background:rgba(10,14,22,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet .panel{background:var(--surface);width:100%;max-width:720px;max-height:82vh;overflow:auto;border-radius:16px 16px 0 0;padding:18px max(16px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:6px 0 14px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
+.sec-t{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
+.cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px}
+.cell{aspect-ratio:1;max-width:100%;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-family:var(--f-num);font-size:13px;position:relative}
+.cell.ans{background:var(--accent-soft);border-color:var(--accent)}
+.cell.cur{outline:2px solid var(--ink)}
+.cell.fl::after{content:"";position:absolute;top:3px;right:3px;width:7px;height:7px;border-radius:50%;background:var(--mark)}
+.cell.ok{background:var(--good-soft);border-color:var(--good)}
+.cell.no{background:var(--bad-soft);border-color:var(--bad)}
+.panel-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.panel-h h3{margin:0;font-size:17px}
+
+/* results */
+.res{padding-block:32px 80px;display:grid;gap:28px}
+.score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.score .big{font-family:var(--f-read);font-weight:700;font-size:clamp(54px,12vw,84px);line-height:1}
+.score .of{font-family:var(--f-num);color:var(--muted);font-size:20px}
+.domains{display:grid;gap:14px}
+.dom{display:grid;gap:6px}
+.dom-top{display:flex;justify-content:space-between;gap:10px;font-weight:600}
+.dom-top span:last-child{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.track{height:10px;border-radius:5px;background:var(--line);overflow:hidden}
+.track i{display:block;height:100%;background:var(--accent);border-radius:5px}
+.skills{overflow-x:auto}
+.skills table{width:100%;border-collapse:collapse;font-size:14px;min-width:340px}
+.skills th,.skills td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
+.skills td.n{font-family:var(--f-num);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.skills th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;font-weight:600}
+.pill.lo{background:var(--bad-soft);color:var(--bad)} .pill.mid{background:var(--mark-soft);color:var(--ink)} .pill.hi{background:var(--good-soft);color:var(--good)}
+h2.sh{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:5px 12px;font-size:13px;font-weight:600}
+.seg button.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.rlist{display:grid;gap:8px;margin-top:12px}
+.ritem{display:flex;gap:12px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px;text-align:left;width:100%}
+.ritem .qnum{flex:none}
+.ritem .rt{min-width:0;flex:1}
+.ritem .rt div{font-size:13px;color:var(--muted)}
+.ritem .rt p{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mk{font-family:var(--f-num);font-weight:600;flex:none}
+.mk.ok{color:var(--good)} .mk.no{color:var(--bad)}
+.confirm{border:1.5px solid var(--bad);background:var(--bad-soft);border-radius:12px;padding:14px;display:grid;gap:10px;margin-top:14px}
+@media (prefers-reduced-motion:no-preference){.opt,.cell,.btn{transition:border-color .12s,background .12s}}
+</style>
+
+<div class="bar"><div class="wrap">
+  <div class="brand">SAT R&amp;W Mock 100<small>The Clever Tutors</small></div>
+  <div class="timer" id="timer" hidden>120:00</div>
+  <button class="btn ghost" id="topAction" hidden>ส่งข้อสอบ</button>
+</div></div>
+<main id="app"></main>
+<div id="sheetHost"></div>
+
+<script>
+const SKILLS={
+ WIC:["Words in Context","CAS"],TSP:["Text Structure & Purpose","CAS"],CTC:["Cross-Text Connections","CAS"],
+ CID:["Central Ideas & Details","INI"],COE:["Command of Evidence: Textual","INI"],QNT:["Command of Evidence: Quantitative","INI"],INF:["Inferences","INI"],
+ BND:["Boundaries","SEC"],FSS:["Form, Structure & Sense","SEC"],TRN:["Transitions","EOI"],RHS:["Rhetorical Synthesis","EOI"]};
+const DOMAINS={CAS:"Craft and Structure",INI:"Information and Ideas",SEC:"Standard English Conventions",EOI:"Expression of Ideas"};
+const DEFQ={
+ WIC:"Which choice completes the text with the most logical and precise word or phrase?",
+ INF:"Which choice most logically completes the text?",
+ BND:"Which choice completes the text so that it conforms to the conventions of Standard English?",
+ FSS:"Which choice completes the text so that it conforms to the conventions of Standard English?",
+ TRN:"Which choice completes the text with the most logical transition?",
+ QNT:"Which choice most effectively uses data from the table to complete the statement?"};
+const B="______";
+const NOTES="While researching a topic, a student has taken the following notes:";
+const tbl=(cap,head,rows)=>`<div class="tbl"><table><caption>${cap}</caption><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div>`;
+
+// [skill, passage, question('' = default), options, answerIndex, explanation(Thai)]
+const Q=[
+// ---------- Words in Context ----------
+["WIC",`Botanist Ynes Mexía collected more than 145,000 plant specimens, a ${B} output that is all the more remarkable because she did not begin her scientific career until age 55.`,"",["modest","prodigious","uncertain","derivative"],1,"prodigious = มหาศาล มากผิดปกติ เข้ากับตัวเลข 145,000 และวลี “all the more remarkable” ส่วน modest (น้อย) ขัดกับบริบท"],
+["WIC",`Although critics initially dismissed the novel as sentimental, later scholars have ${B} its reputation, arguing that its emotional directness was a deliberate challenge to the detached style of its era.`,"",["rehabilitated","fabricated","obscured","predicted"],0,"rehabilitated = กู้ชื่อเสียงคืน นักวิชาการรุ่นหลังมองว่าความตรงไปตรงมาทางอารมณ์เป็นความตั้งใจ จึงทำให้ชื่อเสียงที่เคยถูกปัดตกกลับดีขึ้น"],
+["WIC",`The hummingbird must feed almost constantly; its energy demands are so ${B} that it can consume more than its own body weight in nectar each day.`,"",["negligible","static","ambiguous","exorbitant"],3,"กินน้ำหวานมากกว่าน้ำหนักตัวต่อวัน แปลว่าความต้องการพลังงาน “สูงเกินปกติ” = exorbitant ส่วน negligible (น้อยจนไม่ต้องสนใจ) ตรงข้าม"],
+["WIC",`Historian Kenneth Pomeranz does not ${B} the importance of European innovation; rather, he argues that access to coal and colonial resources was at least as decisive in explaining why industrialization began in Britain.`,"",["discount","celebrate","invent","accelerate"],0,"โครงสร้าง “does not ___ ; rather … at least as decisive” บอกว่าเขาไม่ได้ “ลดความสำคัญ” (discount) ของนวัตกรรม เพียงแต่เสนอปัจจัยอื่นที่สำคัญพอกัน"],
+["WIC",`The architect's design for the library is notably ${B}: rather than adding ornate decoration, she relied on plain concrete surfaces and natural light.`,"",["extravagant","haphazard","austere","imitative"],2,"ส่วนหลัง colon อธิบายว่าไม่มีการตกแต่ง ใช้คอนกรีตเรียบ = austere (เรียบ เคร่งขรึม) ตรงข้ามกับ extravagant"],
+["WIC",`In one study of urban birds, researchers found that white-crowned sparrows in San Francisco sang at higher pitches during periods of heavy traffic, suggesting that the birds ${B} their songs so that they can be heard over low-frequency noise.`,"",["abandon","adjust","memorize","exaggerate"],1,"นกร้องเสียงสูงขึ้นเมื่อรถเยอะ = “ปรับ” (adjust) เพลงให้ได้ยินชัดกว่าเสียงความถี่ต่ำ ไม่ได้เลิกร้อง (abandon)"],
+["WIC",`The committee's report was deliberately ${B}, offering no clear recommendation so that no member would feel that his or her position had been rejected.`,"",["incisive","exhaustive","inflammatory","equivocal"],3,"ตั้งใจไม่ให้ข้อเสนอชัดเจน = equivocal (คลุมเครือ ไม่ฟันธง) ส่วน incisive (เฉียบคม ตรงประเด็น) ตรงข้าม"],
+["WIC",`Because the region's historical records were scattered across dozens of archives, the researchers spent years ${B} the documents into a single searchable database.`,"",["dispersing","consolidating","dismissing","censoring"],1,"เอกสารกระจัดกระจาย → นำมา “รวม” ไว้ในฐานข้อมูลเดียว = consolidating ส่วน dispersing แปลว่ากระจายออก"],
+["WIC",`Poet Joy Harjo's work often ${B} the boundary between personal memory and collective history, moving from a single family story to the experiences of the Muscogee Nation as a whole.`,"",["blurs","reinforces","ignores","measures"],0,"งานเคลื่อนจากเรื่องครอบครัวไปสู่ประสบการณ์ของทั้งชนชาติ แปลว่าทำให้เส้นแบ่งระหว่างส่วนตัวกับส่วนรวม “พร่าเลือน” (blurs) ไม่ใช่ทำให้ชัดขึ้น (reinforces)"],
+["WIC",`Initial results seemed to show that the new drug lowered blood pressure, but the effect proved ${B}: once patients stopped taking it, their blood pressure returned to previous levels within days.`,"",["permanent","unanticipated","transient","contagious"],2,"ผลหายไปภายในไม่กี่วันหลังหยุดยา = transient (ชั่วคราว) ตรงข้ามกับ permanent"],
+["WIC",`The following text is from a short story.<br><br>Mr. Lowe was about to offer his opinion of the new minister, but a stern glance from his sister checked him, and he returned his attention to his soup.`,"As used in the text, what does the word “checked” most nearly mean?",["examined","restrained","marked","verified"],1,"สายตาดุของน้องสาวทำให้เขาหยุดพูดแล้วหันไปกินซุป → checked = ยับยั้ง (restrained) ไม่ใช่ความหมาย “ตรวจสอบ” ที่คุ้นเคย"],
+["WIC",`Marine biologist Sylvia Earle has argued that ocean protection should not be treated as a ${B} concern, secondary to economic development, but as a foundation on which economic health depends.`,"",["peripheral","urgent","scientific","universal"],0,"วลี “secondary to economic development” ขยายช่องว่าง → ต้องเป็นคำว่า “อยู่ชายขอบ/ไม่สำคัญ” = peripheral"],
+["WIC",`The two theories are not ${B}; a researcher can accept that climate shaped early human migration while also recognizing the important role of cultural innovation.`,"",["compatible","empirical","obsolete","incompatible"],3,"หลัง semicolon บอกว่ายอมรับทั้งสองทฤษฎีพร้อมกันได้ → ทั้งสอง “ไม่ขัดแย้งกัน” = not incompatible"],
+["WIC",`Rather than ${B} the data that contradicted her hypothesis, the physicist published them in full, inviting other researchers to propose explanations.`,"",["replicating","suppressing","celebrating","organizing"],1,"“Rather than ___ … published them in full” ต้องเป็นสิ่งตรงข้ามกับการเผยแพร่ = suppressing (ปิดบัง กดไว้)"],
+["WIC",`The black-on-black pottery that Maria Martinez and her husband, Julian, developed around 1918 was so ${B} that collectors soon sought it out, and the technique helped revive the economy of San Ildefonso Pueblo.`,"",["conventional","fragile","distinctive","temporary"],2,"นักสะสมตามหาและช่วยฟื้นเศรษฐกิจชุมชน → เครื่องปั้นต้องมี “เอกลักษณ์โดดเด่น” = distinctive ไม่ใช่ธรรมดา (conventional)"],
+// ---------- Text Structure & Purpose ----------
+["TSP",`Many people assume that the tallest trees in a forest are the oldest. In the coast redwood forests of California, however, researchers have found that height is a poor predictor of age: some relatively short trees growing in shaded, nutrient-poor soil are centuries older than their towering neighbors. Growth rate, it turns out, depends more on local conditions than on time.`,"Which choice best describes the overall structure of the text?",["It presents a common assumption and then offers evidence that challenges it.","It describes a research method and then explains its limitations.","It compares two scientific theories and argues that one is superior.","It narrates a discovery and then describes its commercial applications."],0,"เปิดด้วยความเชื่อทั่วไป (ต้นสูงสุด = แก่สุด) แล้วใช้ “however” นำหลักฐานจากป่าเรดวูดที่ค้านความเชื่อนั้น"],
+["TSP",`Fungi are often grouped with plants in the popular imagination: both grow in soil, and both stay rooted in one place. Genetic studies, however, show that fungi are more closely related to animals than to plants. Like animals, fungi cannot make their own food through photosynthesis and must instead absorb nutrients from other organisms.`,"Which choice best states the main purpose of the text?",["To argue that fungi should be reclassified as animals","To correct a common misconception about how fungi are related to plants and animals","To explain the process by which fungi absorb nutrients","To describe the history of genetic studies of fungi"],1,"ข้อความแก้ความเข้าใจผิดว่าเห็ดราใกล้เคียงพืช แต่จริงๆ ใกล้สัตว์มากกว่า ไม่ได้เสนอให้จัดเป็นสัตว์ (ตัวเลือกแรกเกินจากเนื้อหา)"],
+["TSP",`In 1931, Karl Jansky, an engineer at Bell Laboratories, was assigned to identify sources of static that interfered with transatlantic radio calls. He catalogued thunderstorms and other expected sources, but one faint hiss remained, rising and falling on a cycle of almost exactly 23 hours and 56 minutes. <u>That figure matches the length of a sidereal day—the time Earth takes to rotate once relative to the distant stars—rather than a solar day.</u> Jansky concluded that the signal came from beyond the solar system, a finding that launched the field of radio astronomy.`,"Which choice best describes the function of the underlined sentence in the text as a whole?",["It describes a flaw in Jansky's equipment.","It introduces a competing explanation that Jansky ultimately rejected.","It provides information that helps explain Jansky's conclusion about the signal's origin.","It summarizes how thunderstorms produce radio static."],2,"ประโยคที่ขีดเส้นใต้บอกว่ารอบ 23 ชม. 56 นาที ตรงกับวันดาราคติ (เทียบกับดาวไกล) นี่คือเหตุผลที่แจนสกีสรุปว่าสัญญาณมาจากนอกระบบสุริยะ"],
+["TSP",`The following text is from a short story.<br><br>Rosa had rehearsed the speech for weeks—in the shower, on the bus, under her breath while waiting in line at the bank. She would tell them, calmly and clearly, that she was leaving the family business. When the moment came and every face at the table turned toward her, she opened her mouth and heard herself ask, in a perfectly ordinary voice, whether anyone wanted more tea.`,"Which choice best states the main purpose of the text?",["To describe a long-standing family tradition","To explain why Rosa prefers tea to other drinks","To contrast Rosa's personality with that of her guests","To show the gap between what Rosa planned to do and what she actually does"],3,"โรซาซ้อมพูดมาหลายสัปดาห์ แต่พอถึงเวลากลับถามเรื่องชา → แสดงช่องว่างระหว่างแผนกับสิ่งที่ทำจริง"],
+["TSP",`Economists have long used gross domestic product (GDP) to measure a nation's well-being. Critics point out that GDP counts spending on disaster cleanup as growth while ignoring unpaid work such as caring for children and elderly relatives. Some countries, such as New Zealand, have begun supplementing GDP with “wellbeing budgets” that track indicators such as mental health and child poverty.`,"Which choice best describes the overall structure of the text?",["It explains how GDP is calculated and then defends its use.","It identifies a conventional measure, notes limitations of it, and mentions one response to those limitations.","It traces the history of economic policy in New Zealand.","It argues that GDP should be abandoned entirely."],1,"โครงสร้าง: GDP (มาตรวัดดั้งเดิม) → ข้อวิจารณ์ → ตัวอย่างการตอบสนอง (wellbeing budgets) คำว่า “supplementing” บอกว่าใช้เสริม ไม่ได้ทิ้ง GDP"],
+["TSP",`An octopus has about 500 million neurons, roughly two-thirds of which are located in its arms rather than its brain. In experiments, an arm that has been separated from the body can still reach for and grasp food. Such findings have led some biologists to describe octopus intelligence as distributed rather than centralized.`,"Which choice best states the main purpose of the text?",["To present evidence that supports a particular characterization of octopus cognition","To question whether octopuses are capable of intelligent behavior","To compare the nervous systems of octopuses and mammals","To describe the hunting strategies that octopuses use"],0,"ข้อมูลเซลล์ประสาทในแขนและการทดลองแขนที่ถูกตัด เป็นหลักฐานสนับสนุนการมองว่าสติปัญญาของหมึก “กระจายตัว” (distributed)"],
+["TSP",`Architect Diébédo Francis Kéré designed the Gando Primary School in Burkina Faso using clay bricks made by local villagers. <u>Clay, which absorbs heat during the day and releases it slowly, keeps classrooms cooler than the concrete commonly used in the region.</u> A raised roof allows hot air to escape. The design earned Kéré international recognition and demonstrated that local materials could outperform imported ones.`,"Which choice best describes the function of the underlined sentence in the text as a whole?",["It contrasts Kéré's early work with his later projects.","It explains a benefit of a material mentioned in the previous sentence.","It identifies a problem that the design failed to solve.","It describes the process villagers used to make the bricks."],1,"ประโยคนี้ขยายความ “clay bricks” ในประโยคก่อน โดยบอกข้อดี: ดินเหนียวดูดความร้อนและคายช้า ห้องเรียนจึงเย็นกว่า"],
+["TSP",`Before the eighteenth century, sailors had no reliable way to determine their longitude at sea, and ships that miscalculated their position were often wrecked. In 1714, the British Parliament offered a large prize for a practical solution. John Harrison, a self-taught clockmaker, spent decades building marine timekeepers precise enough to keep accurate time on a rolling ship, allowing navigators to calculate longitude.`,"Which choice best states the main purpose of the text?",["To argue that Parliament treated Harrison unfairly","To explain how sailors calculated latitude","To describe a navigational problem and an individual's effort to solve it","To compare the designs of several eighteenth-century clockmakers"],2,"ข้อความบรรยายปัญหา (หาลองจิจูดในทะเลไม่ได้) แล้วเล่าถึงคนที่พยายามแก้ (Harrison) ไม่ได้พูดเรื่องความไม่เป็นธรรมหรือละติจูด"],
+["TSP",`The following text is from a novel.<br><br>At first the city frightened him: the noise, the crowds, the buildings that blocked out the sky. By autumn he had learned the rhythm of its streets—which corner sold the warmest bread, which bus driver would wait for a running passenger. By winter, when letters arrived from home, he found that he read them quickly, already thinking about the evening ahead.`,"Which choice best describes the overall structure of the text?",["It presents a memory and then questions its accuracy.","It describes a conflict between the character and his family.","It describes the city from the perspectives of several characters.","It traces a gradual shift in a character's relationship to a place."],3,"ลำดับเวลา: ตอนแรกกลัว → ฤดูใบไม้ร่วงคุ้นเคย → ฤดูหนาวอ่านจดหมายจากบ้านแบบรีบๆ = ความรู้สึกต่อเมืองค่อยๆ เปลี่ยน"],
+["TSP",`Many people believe that Pluto was “demoted” from planet status simply because it is small. In fact, the International Astronomical Union's 2006 definition of a planet requires that a body have cleared its orbital neighborhood of other objects. Pluto, which shares its region of space with numerous icy bodies in the Kuiper Belt, does not meet this criterion.`,"Which choice best states the main purpose of the text?",["To clarify the actual reason for a change in Pluto's classification","To argue that Pluto should be considered a planet again","To describe how the Kuiper Belt was formed","To criticize the International Astronomical Union's decision"],0,"ข้อความแก้ความเข้าใจผิดว่าพลูโตถูกลดสถานะเพราะเล็ก โดยอธิบายเกณฑ์จริง (ยังไม่เคลียร์วงโคจร) ไม่ได้วิจารณ์ IAU"],
+// ---------- Cross-Text ----------
+["CTC",`<b>Text 1</b><br>Many linguists have argued that the ability to acquire language is largely innate. Children everywhere master complex grammar quickly, even though the speech they hear is limited and often fragmentary. This suggests that humans are born with a specialized “language faculty.”<br><br><b>Text 2</b><br>Psychologist Michael Tomasello contends that children learn grammar by gradually generalizing from specific phrases they hear repeatedly. In his view, general cognitive skills—such as recognizing patterns and understanding other people's intentions—are sufficient to explain how children acquire language.`,"Based on the texts, how would Tomasello (Text 2) most likely respond to the linguists in Text 1?",["By arguing that children in different cultures acquire grammar at very different speeds","By questioning whether a specialized, built-in capacity is necessary to account for how children learn grammar","By asserting that pattern recognition is itself a language faculty unique to humans","By agreeing that language depends on a built-in faculty but disputing how quickly it develops"],1,"Tomasello เชื่อว่าทักษะการรับรู้ทั่วไป “เพียงพอ” (sufficient) แล้ว จึงตั้งคำถามว่าจำเป็นต้องมี language faculty แบบเฉพาะทางหรือไม่"],
+["CTC",`<b>Text 1</b><br>Historians often credit the printing press with the success of the Protestant Reformation. Martin Luther's pamphlets were printed in enormous numbers, allowing his ideas to spread across Europe faster than church authorities could suppress them.<br><br><b>Text 2</b><br>The printing press certainly helped Luther's ideas circulate. But printed texts alone could not guarantee a reformer's survival. Luther was protected by Frederick the Wise of Saxony, whose refusal to hand him over to church authorities allowed Luther to keep writing. Without such protection, Luther might have met the same fate as earlier reformers.`,"Based on the texts, how would the author of Text 2 most likely respond to the claim in Text 1?",["It overstates how quickly Luther's pamphlets were distributed.","It is correct, since Frederick the Wise personally financed print shops.","It gives insufficient weight to the political conditions that allowed Luther to continue his work.","It wrongly assumes that Luther wrote pamphlets rather than books."],2,"Text 2 ยอมรับว่าแท่นพิมพ์ช่วยจริง แต่ชี้ว่าการคุ้มครองทางการเมืองจาก Frederick สำคัญไม่แพ้กัน → Text 1 ให้น้ำหนักปัจจัยการเมืองน้อยไป"],
+["CTC",`<b>Text 1</b><br>Reintroducing large predators is often credited with restoring damaged ecosystems. In Yellowstone National Park, wolves reintroduced in 1995 reduced the number of elk browsing along streams, allowing willow and aspen trees to recover.<br><br><b>Text 2</b><br>Some ecologists now question the Yellowstone story. In many areas, willows have not recovered. Decades of heavy elk browsing had driven away beavers, whose dams once kept water tables high. Even with fewer elk, the drier soil limits willow growth.`,"Based on the texts, the author of Text 2 would most likely characterize the account in Text 1 as",["entirely accurate but incomplete in its description of elk behavior.","based on data that were fabricated.","irrelevant to discussions of predator reintroduction outside Yellowstone.","an oversimplified explanation of changes that depend on additional factors."],3,"Text 2 ไม่ได้บอกว่าเรื่องเล่าผิดทั้งหมด แต่ชี้ว่ามีปัจจัยอื่น (บีเวอร์หาย ระดับน้ำใต้ดินลด) → เรื่องใน Text 1 “ง่ายเกินไป”"],
+["CTC",`<b>Text 1</b><br>Supporters of standardized admissions tests argue that scores are useful predictors of how well students will perform in college, since they measure skills in reading and mathematics on a common scale.<br><br><b>Text 2</b><br>A large study of public university students found that high school grade point average (GPA) predicted college graduation more strongly than test scores did. The researchers suggested that GPA reflects sustained habits, such as persistence and organization, developed over several years.`,"Based on the texts, how would the researchers in Text 2 most likely respond to the supporters in Text 1?",["By suggesting that another measure may better reflect qualities associated with completing college","By claiming that test scores are entirely unrelated to college performance","By arguing that high school grades have become inflated","By agreeing that test scores are the best single predictor of college success"],0,"Text 2 ชี้ว่า GPA ทำนายการเรียนจบได้ดีกว่าเพราะสะท้อนนิสัยต่อเนื่อง → เสนอมาตรวัดอื่นที่จับคุณสมบัติซึ่งข้อสอบวัดไม่ได้ (ไม่ได้บอกว่าคะแนนสอบไร้ประโยชน์)"],
+["CTC",`<b>Text 1</b><br>Images produced by computer programs lack artistic value, one critic argues, because art requires intention, and a machine has none. Without a mind behind it, an image is merely a pattern.<br><br><b>Text 2</b><br>Artist Sofia Crespo uses algorithms as tools. She chooses which images to feed into the software, adjusts its settings hundreds of times, and discards most of the results. For artists like Crespo, the intention lies in the process of directing and selecting.`,"Based on the texts, how would artists like Crespo (Text 2) most likely respond to the critic in Text 1?",["By claiming that machines do in fact possess intentions","By suggesting that intention can come from the person who directs and selects the work produced with such tools","By agreeing that algorithm-based works have no artistic value","By arguing that intention is irrelevant to whether something is art"],1,"ศิลปินมองว่าเจตนาอยู่ที่การกำกับและคัดเลือกของมนุษย์ → ตอบว่าเจตนามาจากคนที่ใช้เครื่องมือ ไม่ได้อ้างว่าเครื่องมีเจตนา"],
+// ---------- Central Ideas ----------
+["CID",`Researchers studying honeybees found that foragers returning to the hive with high-quality nectar perform longer “waggle dances” than those returning with poor-quality nectar. Other bees are more likely to follow longer dances, so more workers are recruited to the richest food sources. In this way, the colony allocates its labor efficiently without any single bee comparing the options.`,"Which choice best states the main idea of the text?",["Honeybees cannot distinguish high-quality nectar from low-quality nectar.","Waggle dances have become longer over many generations.","A colony directs workers toward the best food sources without any individual bee evaluating all the choices.","Researchers disagree about the purpose of the waggle dance."],2,"ประโยคสุดท้ายสรุปใจความ: อาณาจักรผึ้งจัดสรรแรงงานได้ดีโดยไม่มีผึ้งตัวไหนเปรียบเทียบตัวเลือกทั้งหมด"],
+["CID",`The following text is from a novel.<br><br>Grandmother never spoke of the war, and the children learned not to ask. But every spring she planted exactly the same garden—tomatoes, beans, a single row of sunflowers—and stood at the edge of it each evening, watching the light go, as if keeping an appointment with someone only she could see.`,"Which choice best states the main idea of the text?",["Grandmother is proud of her skill as a gardener and wants the children to learn it.","The children resent Grandmother's refusal to talk about her past.","The garden is the family's only source of food.","Grandmother's unchanging routine hints at a private connection to the past that she does not discuss."],3,"ไม่เคยพูดถึงสงคราม แต่ปลูกสวนแบบเดิมทุกปีและยืนมองแสงเหมือน “มีนัดกับใครสักคน” → กิจวัตรสื่อถึงอดีตที่เธอเก็บไว้"],
+["CID",`Historians once described the Silk Road as a single highway along which merchants carried goods from China to the Mediterranean. More recent scholarship emphasizes that it was a shifting network of many routes. Most traders traveled only short segments, exchanging goods with merchants from neighboring regions, so that a bolt of silk might change hands dozens of times before reaching its final buyer.`,"Which choice best states the main idea of the text?",["Most Silk Road merchants traveled the entire distance from China to the Mediterranean.","The Silk Road is better understood as a changing network of shorter exchanges than as a single long route.","Silk was one of the least valuable goods traded along the Silk Road.","Scholars have recently stopped studying the Silk Road."],1,"งานวิจัยใหม่มองว่าเป็น “shifting network” ที่พ่อค้าเดินทางแค่ช่วงสั้นๆ ตัวเลือกแรกคือความเชื่อเก่าที่ข้อความแก้"],
+["CID",`Mary Anderson patented the windshield wiper in 1903 after watching a streetcar driver struggle to see through sleet. Automobile manufacturers initially dismissed the device, claiming that a moving blade would distract drivers, and her patent expired before she earned any money from it. By the 1920s, however, wipers had become standard equipment on cars.`,"Which choice best states the main idea of the text?",["Anderson invented a device that was initially rejected but later widely adopted.","Anderson's wiper design was too distracting to be used on cars.","Streetcar drivers were the first to install windshield wipers.","Automobile manufacturers paid Anderson for her invention in the 1920s."],0,"สิ่งประดิษฐ์ถูกปฏิเสธในตอนแรก แต่กลายเป็นอุปกรณ์มาตรฐานในภายหลัง ตัวเลือกสุดท้ายขัดกับข้อความ (เธอไม่ได้เงิน)"],
+["CID",`In one study, employees who worked remotely completed individual tasks more quickly than colleagues in the office. However, remote teams produced fewer novel ideas in collaborative projects. The researchers suggested that the informal, unplanned conversations that occur in shared workspaces may play a role in generating new ideas.`,"Which choice best states the main idea of the text?",["Remote work may involve a trade-off between individual productivity and certain kinds of collaborative innovation.","Remote work reduces employee productivity in every respect.","Collaboration software has eliminated the drawbacks of remote work.","Most employees prefer working in an office to working remotely."],0,"งานวิจัยพบทั้งข้อดี (งานเดี่ยวเร็วขึ้น) และข้อเสีย (ไอเดียใหม่น้อยลง) = trade-off คำว่า “in every respect” เกินจริง"],
+["CID",`The Great Green Wall initiative originally aimed to plant a continuous line of trees across Africa's Sahel region to halt the spread of the desert. Many of the seedlings died in the harsh conditions. Organizers have since shifted toward supporting techniques long used by local farmers, such as protecting tree stumps that regrow naturally—an approach that has helped restore millions of hectares of land.`,"Which choice best states the main idea of the text?",["The Great Green Wall initiative has been abandoned.","Farmers in the Sahel oppose efforts to plant trees.","Tree stumps rarely regrow in dry climates.","The initiative changed its approach after its original plan encountered difficulties."],3,"แผนเดิม (ปลูกต้นไม้เป็นแนว) ไม่ได้ผล จึงเปลี่ยนมาสนับสนุนวิธีของเกษตรกรท้องถิ่น ไม่ได้ยกเลิกโครงการ"],
+["CID",`The following text is from a short story.<br><br>Theo's violin teacher never praised him. She listened to each piece in silence, then said only, “Again.” For years Theo assumed she thought him hopeless. It was not until her retirement party, when she introduced him to a roomful of strangers as “the student who never gave up on a phrase,” that he understood what her silence had meant.`,"Which choice best states the main idea of the text?",["Theo's teacher was unusually harsh with all of her students.","Theo decides to stop playing the violin.","Theo resents his teacher for retiring.","Theo comes to see his teacher's reticence as a form of regard for his persistence."],3,"คำแนะนำตัวในงานเกษียณทำให้ธีโอเข้าใจว่าความเงียบของครูคือการยอมรับความไม่ย่อท้อของเขา"],
+["CID",`Fossils discovered in China since the 1990s show that many dinosaurs had feathers, even though their bodies and limbs were not suited for flight. Based on these findings, many paleontologists now think that feathers first evolved for purposes such as insulation or display and were only later adapted for flying.`,"Which choice best states the main idea of the text?",["Most feathered dinosaurs were capable of flight.","Feathers evolved primarily as an adaptation for flight.","Feathers likely served purposes other than flight before they were used for flying.","Fossils from China are unreliable evidence about dinosaurs."],2,"ไดโนเสาร์มีขนแต่บินไม่ได้ → ขนเกิดขึ้นเพื่อจุดประสงค์อื่นก่อน (ให้ความอบอุ่น/แสดงตัว) แล้วจึงถูกใช้ในการบิน"],
+// ---------- Command of Evidence: Textual ----------
+["COE",`A marine biologist claims that coral reefs near an island are recovering because of a recent fishing ban that protects parrotfish. Parrotfish eat algae that would otherwise grow over corals and prevent new corals from settling.`,"Which finding, if true, would most directly support the biologist's claim?",["Tourists visiting the island report seeing more colorful fish than in previous years.","Algae grows more rapidly in warm water than in cool water.","Reef areas inside the protected zone have more parrotfish, less algae, and more new coral than comparable areas outside it.","Parrotfish populations have declined at several reefs elsewhere in the region."],2,"ข้อกล่าวอ้างคือ ห้ามจับปลา → ปลานกแก้วเพิ่ม → สาหร่ายลด → ปะการังฟื้น ตัวเลือกที่เปรียบเทียบในเขตห้าม/นอกเขต ครอบคลุมทุกขั้น"],
+["COE",`In a novel, the narrator suggests that Ms. Ortega, an elderly woman who lives alone, is more generous than her neighbors realize.`,"Which quotation from the novel most effectively illustrates the narrator's suggestion?",["“Ms. Ortega rarely smiled, and children crossed the street to avoid her house.”","“Every winter, an anonymous envelope of money arrived at the shelter, always addressed in Ms. Ortega's unmistakable slanted handwriting.”","“Ms. Ortega's garden was the neatest on the block.”","“She had lived in the town longer than anyone could remember.”"],1,"การส่งเงินให้ที่พักพิงแบบไม่ระบุชื่อทุกปีคือความใจกว้างที่ “เพื่อนบ้านไม่รู้” ตัวเลือกแรกแสดงแค่ภาพลักษณ์ภายนอก"],
+["COE",`A student is writing a paper arguing that the Inca road system was crucial to the empire's ability to control its vast territory.`,"Which quotation from a historian's work would most effectively support the student's argument?",["“The Inca did not use wheeled vehicles on their roads.”","“Many sections of the roads survive today and attract thousands of hikers.”","“Construction techniques varied with the terrain, from stone stairways to rope bridges.”","“The roads, totaling some 40,000 kilometers, allowed armies and messengers to move rapidly, so that a rebellion in a distant province could be met within days.”"],3,"ต้องแสดงว่าถนน “ช่วยควบคุมดินแดน” → กองทัพและผู้ส่งสารเคลื่อนที่เร็ว ปราบกบฏได้ในไม่กี่วัน ตัวเลือกอื่นจริงแต่ไม่เกี่ยวกับการควบคุม"],
+["COE",`Researchers hypothesize that sleep helps the brain consolidate newly learned information, making it easier to recall later.`,"Which finding, if true, would most directly weaken the researchers' hypothesis?",["Participants who slept after studying a list of words recalled more of the words than participants who stayed awake.","Participants who slept after studying a list of words recalled no more of the words than participants who stayed awake for an equal amount of time.","Older adults sleep fewer hours on average than younger adults do.","Many people report dreaming about events from the previous day."],1,"จะ “ทำให้อ่อนลง” ต้องเป็นผลที่ว่าการนอนไม่ได้ช่วยให้จำได้ดีขึ้น ตัวเลือกที่ว่านอนแล้วจำได้มากกว่าคือหลักฐาน “สนับสนุน”"],
+["COE",`An economist argues that a trial in which companies adopted a four-day workweek increased productivity without reducing overall output.`,"Which finding from the trial, if true, would most directly support the economist's argument?",["Companies in the trial reported that revenue stayed the same or rose even though employees worked fewer hours.","Most employees in the trial said they preferred a four-day schedule.","The trial lasted six months and included companies of various sizes.","Several companies declined to participate in the trial."],0,"ข้อกล่าวอ้างมีสองส่วน: ผลิตภาพเพิ่ม + ผลผลิตไม่ลด → รายได้คงที่/เพิ่มทั้งที่ชั่วโมงลด ตอบครบ ส่วนความชอบของพนักงานไม่เกี่ยว"],
+["COE",`In a poem, the speaker expresses ambivalence toward the city where she lives.`,"Which quotation from the poem most effectively illustrates this claim?",["“The towers rise like teeth against the sky”","“Each morning brings the clatter of the trains”","“I love its lighted windows, hate its roar; / I leave each spring, and come back to its door.”","“No place on earth could ever match its charms”"],2,"ambivalence = รู้สึกสองทางขัดกัน บรรทัด love/hate และ leave/come back แสดงทั้งสองความรู้สึกพร้อมกัน ส่วนบรรทัดสุดท้ายชื่นชมอย่างเดียว"],
+["COE",`An anthropologist claims that the builders of a set of ancient stone circles used them to track the seasons.`,"Which finding, if true, would most strongly support the anthropologist's claim?",["The stones were quarried from a site about 20 kilometers away.","Pottery fragments were found near the circles.","Most of the stones are roughly the same size.","Gaps between certain stones align with the position of sunrise on the summer and winter solstices."],3,"ถ้าใช้ติดตามฤดูกาล ต้องเชื่อมกับเหตุการณ์ดาราศาสตร์ตามฤดู → แนวช่องว่างตรงกับพระอาทิตย์ขึ้นวันครีษมายัน/เหมายัน"],
+// ---------- Command of Evidence: Quantitative ----------
+["QNT",tbl("Average Daily Screen Time by Age Group",["Age group","Hours per day"],[["13–15","7.1"],["16–18","8.4"],["19–21","6.2"]])+`<p>A researcher surveyed young people about their daily screen time. She noted that screen time does not simply rise with age across the groups she studied: ${B}</p>`,"",["the 13–15 group averaged 7.1 hours per day.","the 16–18 group averaged 8.4 hours per day, whereas the older 19–21 group averaged only 6.2 hours.","every group averaged more than 6 hours per day.","the 16–18 group averaged more hours per day than the 13–15 group did."],1,"ต้องแสดงว่า “ไม่ได้เพิ่มตามอายุเสมอ”: กลุ่ม 16–18 (8.4) มากกว่ากลุ่มที่อายุมากกว่า (6.2) ตัวเลือกสุดท้ายกลับแสดงการเพิ่มขึ้นตามอายุ"],
+["QNT",tbl("Crop Yield (tons per hectare)",["Year","With cover crops","Without cover crops"],[["1","3.1","3.4"],["2","3.5","3.3"],["3","3.9","3.2"]])+`<p>Some farmers avoid planting cover crops between growing seasons because they worry the practice will reduce yields at first. A three-year study suggests, however, that this concern may be short-sighted, since ${B}</p>`,"",["yields from fields with cover crops were lower than those without in Year 1 but higher in Years 2 and 3.","yields from fields without cover crops were 3.4 tons per hectare in Year 1.","yields from fields without cover crops changed little across the three years.","yields from fields with cover crops were below 4 tons per hectare in all three years."],0,"ข้อกังวลคือผลผลิตลด “ช่วงแรก” ข้อมูลแสดงว่าปีที่ 1 ต่ำกว่าจริง (3.1 vs 3.4) แต่ปี 2–3 สูงกว่า ความกังวลจึง “มองสั้น”"],
+["QNT",tbl("Respondents Who Used a Public Library in the Past Year",["Region","Percent"],[["North","42%"],["South","35%"],["East","51%"],["West","38%"]])+`<p>A researcher surveyed residents of four regions and concluded that residents of the East region were the most likely to report using a public library.</p>`,"Which choice most effectively uses data from the table to support the researcher's conclusion?",["In the West, 38% of respondents reported using a library.","Respondents in the North reported higher library use than respondents in the South did.","Fewer than half of respondents in three of the four regions reported using a library.","51% of East respondents reported using a library, a higher share than in any other region."],3,"ต้องเปรียบเทียบให้เห็นว่าภาคตะวันออก “สูงที่สุด” → 51% สูงกว่าทุกภาค ตัวเลือกอื่นไม่ได้พูดถึงภาคตะวันออกเลย"],
+["QNT",tbl("Birds Counted at Marsh Point Wetland",["Species","2000","2020"],[["Great blue heron","120","95"],["Snowy egret","80","110"],["Belted kingfisher","45","44"]])+`<p>An ecologist argues that recent changes at the wetland have not affected all wading bird species in the same way, noting that from 2000 to 2020, ${B}</p>`,"",["the number of kingfishers stayed nearly the same.","there were more herons than egrets in 2000.","the number of herons fell from 120 to 95, while the number of egrets rose from 80 to 110.","the wetland had more than 200 birds of these species in both years."],2,"ต้องแสดงผลกระทบที่ “ต่างกัน” ระหว่างนกลุยน้ำ: นกกระสาลดลง ขณะที่นกยางเพิ่มขึ้น (kingfisher ไม่ใช่นกลุยน้ำ)"],
+["QNT",tbl("Solar Power's Share of Electricity Generation, Country X",["Year","Share"],[["2010","1%"],["2015","4%"],["2020","11%"],["2025","19%"]])+`<p>A student claims that the growth of solar power's share of electricity generation in Country X accelerated over the period from 2010 to 2025.</p>`,"Which choice most effectively uses data from the table to support the student's claim?",["Solar power provided 19% of the country's electricity in 2025.","Solar's share rose by 3 percentage points from 2010 to 2015, by 7 points from 2015 to 2020, and by 8 points from 2020 to 2025.","Solar power provided less than 5% of the country's electricity in 2015.","Solar's share in 2020 was 11%, which was greater than its share in 2010."],1,"“เร่งตัว” = เพิ่มเร็วขึ้นในแต่ละช่วง (+3, +7, +8) ตัวเลือกอื่นให้แค่ค่าเดียวหรือเทียบสองปี ไม่แสดงอัตราที่เร็วขึ้น"],
+// ---------- Inferences ----------
+["INF",`Most bat species use echolocation—emitting high-pitched calls and listening for echoes—to navigate in the dark. Fruit bats of the genus <i>Pteropus</i>, however, have unusually large eyes and lack the specialized ear and throat structures found in echolocating bats. These features suggest that <i>Pteropus</i> bats ${B}`,"",["use echolocation more effectively than other bats do.","are unable to fly at night.","rely mainly on sight rather than echolocation to find their way.","evolved from echolocating ancestors only recently."],2,"ตาโตและไม่มีโครงสร้างสำหรับ echolocation → น่าจะใช้สายตาเป็นหลัก ไม่มีข้อมูลว่าบินกลางคืนไม่ได้"],
+["INF",`Archaeologists have found hundreds of Roman coins at a site in southern India dating to the first century CE. Because no evidence suggests that Romans ever settled in the area, the coins most likely indicate that ${B}`,"",["the area was conquered by Roman armies.","people in the area took part, directly or indirectly, in trade with the Roman world.","Roman coins were manufactured in southern India.","the site was abandoned before the first century CE."],1,"ไม่มีหลักฐานว่าชาวโรมันมาตั้งถิ่นฐาน → เหรียญน่าจะมาจากการค้า ตัวเลือก “ถูกพิชิต” ขัดกับข้อมูล"],
+["INF",`In a study, participants who were told that a wine was expensive rated it as tasting better than participants who were told that the same wine was cheap. Brain scans also showed greater activity in regions associated with pleasure among participants in the first group. These results suggest that ${B}`,"",["expensive wines are chemically different from inexpensive ones.","participants deliberately gave false ratings.","brain scans are unreliable tools for studying taste.","people's beliefs about a product can shape how much they actually enjoy it."],3,"เป็นไวน์ตัวเดียวกัน และสมองส่วนความพึงพอใจทำงานมากขึ้นจริง (ไม่ใช่แค่พูด) → ความเชื่อมีผลต่อประสบการณ์จริง"],
+["INF",`Plants exchange gases with the air through tiny pores called stomata, and water vapor escapes through these pores whenever they are open. Many desert plants open their stomata only at night, when temperatures are lower and the air is more humid. This adaptation likely allows these plants to ${B}`,"",["lose less water than they would if their stomata opened during the heat of the day.","absorb more sunlight than other plants.","grow taller than plants in wetter climates.","attract pollinators that are active at night."],0,"น้ำระเหยผ่านปากใบที่เปิด + เปิดตอนเย็นและชื้น → เสียน้ำน้อยกว่าเปิดตอนกลางวัน"],
+["INF",`Medieval manuscripts were usually written on parchment made from animal skin. A collection of thirteenth-century pocket Bibles has pages so thin that some scholars believed they were made from the skins of unborn calves. Protein analysis, however, revealed that the pages came from ordinary calves, goats, and sheep. This finding suggests that ${B}`,"",["the pocket Bibles were produced later than scholars had thought.","the pages' thinness was achieved through skilled processing rather than the use of unusual materials.","protein analysis cannot reliably identify animal species.","the skins of unborn calves were commonly used in medieval books."],1,"หนังมาจากสัตว์ธรรมดา แต่หน้ายังบางมาก → ความบางต้องมาจากเทคนิคการเตรียม ไม่ใช่วัตถุดิบพิเศษ"],
+["INF",`Linguists have observed that languages spoken in mountainous regions often show far more variation between dialects than languages spoken across flat plains. One likely explanation is that ${B}`,"",["mountain communities have historically had larger populations than plains communities.","people in mountainous regions tend to speak more slowly.","rugged terrain historically limited contact between communities, allowing their speech to develop separately.","languages spoken on plains were written down earlier."],2,"ภูมิประเทศขรุขระจำกัดการติดต่อระหว่างชุมชน ภาษาจึงพัฒนาแยกกันเป็นสำเนียงต่างๆ ตัวเลือกอื่นไม่เชื่อมกับความหลากหลายของสำเนียง"],
+["INF",`After a city introduced a fee for driving into its downtown area during peak hours, traffic in the area fell by about 20 percent and bus ridership increased. Meanwhile, sales at downtown retail stores remained roughly the same as before. These results suggest that ${B}`,"",["the fee reduced traffic without substantially hurting downtown retail businesses.","most downtown shoppers had previously traveled by bus.","bus ridership would have increased even without the fee.","many retail businesses moved out of the downtown area."],0,"รถลด 20% แต่ยอดขายปลีกเท่าเดิม → ลดการจราจรได้โดยไม่ทำร้ายธุรกิจ ตัวเลือกอื่นสรุปเกินข้อมูล"],
+["INF",`Several early studies found that people who drank moderate amounts of coffee lived longer, on average, than people who drank none. But the coffee drinkers in these studies also tended to be wealthier and to have better access to health care. Therefore, the studies' results ${B}`,"",["prove that drinking coffee extends a person's life.","cannot on their own show that coffee is responsible for the longer life spans.","show that wealth has no effect on life span.","indicate that coffee is harmful to most people."],1,"มีตัวแปรกวน (รายได้ การเข้าถึงการรักษา) → ผลการศึกษาเพียงอย่างเดียวสรุปไม่ได้ว่ากาแฟเป็นสาเหตุ (correlation ≠ causation)"],
+// ---------- Boundaries ----------
+["BND",`The Atacama Desert in Chile is one of the driest places on ${B} some weather stations there have never recorded a single drop of rain.`,"",["Earth,","Earth and","Earth","Earth;"],3,"สองประโยคสมบูรณ์เชื่อมด้วย semicolon ได้ คอมม่าอย่างเดียว = comma splice ไม่มีอะไรเลย = run-on และ and โดยไม่มีคอมม่าก็ผิดตามแบบ SAT"],
+["BND",`In 1955, Rosa ${B} a seamstress and secretary of the local NAACP chapter, refused to give up her seat on a Montgomery, Alabama, bus.`,"",["Parks,","Parks;","Parks:","Parks"],0,"“a seamstress and secretary…” เป็น appositive (ข้อมูลเสริม) ต้องครอบด้วยคอมม่าทั้งหน้าและหลัง มีคอมม่าหลังแล้ว จึงต้องใส่คอมม่าหน้า"],
+["BND",`The museum's newest exhibit features three ${B} a Ming dynasty vase, a jade mask from the Maya city of Palenque, and an ancient Egyptian scarab.`,"",["artifacts;","artifacts","artifacts:","artifacts, such as:"],2,"หน้า colon เป็นประโยคสมบูรณ์ และหลัง colon คือรายการที่อธิบาย “three artifacts” การใส่ colon หลัง such as ผิดหลัก"],
+["BND",`Researchers placed motion-activated cameras along the ${B} the footage revealed that jaguars used the corridor far more often than expected.`,"",["trail,","trail, and","trail and,","trail"],1,"สองประโยคสมบูรณ์เชื่อมด้วยคำสันธาน and ต้องมีคอมม่าหน้า and (comma + FANBOYS)"],
+["BND",`Chemist Tu ${B} who was awarded the 2015 Nobel Prize in Physiology or Medicine, discovered the malaria drug artemisinin partly by studying ancient Chinese medical texts.`,"",["Youyou—","Youyou;","Youyou","Youyou,"],3,"“who was awarded…” เป็นอนุประโยคแทรกที่มีคอมม่าปิดหลัง Medicine แล้ว จึงต้องเปิดด้วยคอมม่า (เครื่องหมายคู่ต้องเหมือนกัน ห้ามผสม dash กับคอมม่า)"],
+["BND",`Lodgepole pines depend on ${B} the heat from flames melts the resin that seals their cones, allowing the seeds inside to be released.`,"",["fire:","fire,","fire","fire, the"],0,"ส่วนหลังอธิบายว่าต้นสนพึ่งไฟอย่างไร colon ใช้นำคำอธิบายได้ คอมม่าอย่างเดียวทำให้เกิด comma splice"],
+["BND",`Although the novel was first published in ${B} it did not become popular until a film adaptation appeared decades later.`,"",["1937;","1937","1937:","1937,"],3,"“Although…” เป็นอนุประโยคนำ (dependent clause) ต้องคั่นด้วยคอมม่าก่อนประโยคหลัก ใช้ semicolon/colon ไม่ได้เพราะส่วนหน้าไม่ใช่ประโยคสมบูรณ์"],
+["BND",`The coelacanth—a fish once thought to have gone extinct about 66 million years ${B} was rediscovered off the coast of South Africa in 1938.`,"",["ago,","ago;","ago","ago—"],3,"ส่วนแทรกเปิดด้วย dash จึงต้องปิดด้วย dash เช่นกัน"],
+["BND",`Every autumn, monarch butterflies in eastern North America migrate as far as 4,800 ${B} however, no single butterfly completes the entire round trip.`,"",["kilometers,","kilometers","kilometers and","kilometers;"],3,"“however” อยู่ระหว่างสองประโยคสมบูรณ์ ต้องใช้ semicolon หน้า however และคอมม่าหลัง"],
+["BND",`The researchers found that the bacteria ${B} in hot springs can survive temperatures above 80°C.`,"",["living—","living,","living;","living"],3,"“living in hot springs” เป็นวลีจำกัดความ (บอกว่าแบคทีเรียกลุ่มไหน) ไม่ต้องมีเครื่องหมายคั่นระหว่างประธานกับกริยา"],
+["BND",`Chimamanda Ngozi Adichie's novel <i>${B}</i> published in 2013, follows a young Nigerian woman who moves to the United States for college.`,"",["Americanah,","Americanah","Americanah;","Americanah—"],0,"Adichie มีนิยายหลายเล่ม ชื่อเรื่องจึงเป็นข้อมูลจำเป็น (ไม่ใส่คอมม่าหน้า) แต่ “published in 2013” เป็นข้อมูลเสริมที่ปิดด้วยคอมม่า จึงต้องเปิดด้วยคอมม่าหลังชื่อเรื่อง"],
+["BND",`The engineers faced a difficult ${B} how to build a bridge strong enough to withstand earthquakes yet light enough to span the wide river.`,"",["question;","question","question:","question,"],2,"หน้า blank เป็นประโยคสมบูรณ์ และส่วนหลังอธิบายว่าคำถามนั้นคืออะไร → ใช้ colon"],
+["BND",`Using data from more than 2,000 weather ${B} the scientists produced a detailed map of rainfall patterns across the continent.`,"",["stations,","stations;","stations:","stations"],0,"วลีนำ “Using data from …” ต้องคั่นด้วยคอมม่าก่อนประธาน “the scientists”"],
+["BND",`The ancient city of ${B} located in present-day Jordan, was carved directly into rose-colored sandstone cliffs.`,"",["Petra;","Petra","Petra,","Petra:"],2,"“located in present-day Jordan” เป็นวลีเสริมที่มีคอมม่าปิดแล้ว จึงต้องเปิดด้วยคอมม่า"],
+["BND",`Gordon Parks is best known as a photographer, but he was also a composer, a ${B} and a film director.`,"",["novelist;","novelist,","novelist","novelist:"],1,"รายการสามสิ่ง (a composer, a novelist, and a film director) คั่นด้วยคอมม่า"],
+// ---------- Form, Structure & Sense ----------
+["FSS",`The collection of letters that the poet wrote to her sister over four decades ${B} valuable insight into her creative process.`,"",["offers","offer","are offering","have offered"],0,"ประธานคือ “collection” (เอกพจน์) ไม่ใช่ letters หรือ sister → offers"],
+["FSS",`When the city council approved the new budget, ${B} allocated additional funds to public libraries and community centers.`,"",["they","she","it","one"],2,"“the city council” เป็นนามรวมเอกพจน์ → it"],
+["FSS",`By the time Tenzing Norgay and Edmund Hillary reached the summit of Mount Everest in 1953, other climbers ${B} for decades to accomplish the same goal.`,"",["try","will have tried","had been trying","are trying"],2,"การพยายามเกิดก่อนและต่อเนื่องมาจนถึงจุดหนึ่งในอดีต (1953) → past perfect progressive: had been trying"],
+["FSS",`Having studied the birds' migration patterns for more than a decade, ${B}`,"",["the data revealed a surprising trend to the ornithologist.","the ornithologist identified a surprising trend in the data.","a surprising trend was revealed in the data.","there emerged a surprising trend."],1,"วลีนำ “Having studied…” ต้องขยายคนที่ศึกษา → ประธานต้องเป็น the ornithologist ไม่ใช่ข้อมูลหรือแนวโน้ม (dangling modifier)"],
+["FSS",`The ${B} nests, which the birds build almost entirely from their own saliva, are considered a delicacy in some cuisines.`,"",["swiftlets","swiftlet's","swiftlets'","swiftlets's"],2,"รังของนกหลายตัว (พหูพจน์ + แสดงความเป็นเจ้าของ) → swiftlets'"],
+["FSS",`Among the items recovered from the shipwreck ${B} a bronze astrolabe and several gold coins.`,"",["was","is","has been","were"],3,"ประโยคกลับด้าน ประธานจริงคือ “a bronze astrolabe and several gold coins” (พหูพจน์) → were"],
+["FSS",`The mountain gorilla, which lives in the forests of central Africa, ${B} threatened by habitat loss and disease.`,"",["being","to be","having been","is"],3,"ประโยคต้องมีกริยาแท้ (finite verb) ของประธาน The mountain gorilla ตัวเลือกอื่นเป็น nonfinite ทำให้ประโยคไม่สมบูรณ์"],
+["FSS",`In her notes on Charles Babbage's proposed Analytical Engine, Ada Lovelace described how the machine could manipulate symbols, not just numbers—an insight that set ${B} apart from many of her contemporaries.`,"",["her","them","it","him"],0,"ข้อคิดเป็นของ Lovelace และประโยคพูดถึง “her contemporaries” → set her apart"],
+["FSS",`The effects of the prolonged drought on the region's agriculture ${B} still being studied by scientists.`,"",["is","was","are","has been"],2,"ประธานคือ “effects” (พหูพจน์) ไม่ใช่ drought หรือ agriculture → are"],
+["FSS",`The volunteers were asked to count the birds at each site, ${B} their species, and record the time of each sighting.`,"",["identifying","identify","to identify","identified"],1,"Parallelism: to count, identify, record ทุกตัวเป็น base verb ตามหลัง to ตัวเดียว"],
+["FSS",`In her 1962 book <i>Silent Spring</i>, Rachel Carson argued that pesticides were harming wildlife; the book ${B} public concern and contributed to the eventual ban of DDT in the United States.`,"",["raised","raises","will raise","is raising"],0,"เหตุการณ์ในอดีต (1962) และประโยคใช้ argued/contributed → past simple: raised"],
+["FSS",`Each of the paintings in the exhibit has ${B} own label describing the artist's technique.`,"",["their","it's","there","its"],3,"“Each” เป็นเอกพจน์ → its (แสดงความเป็นเจ้าของ) ส่วน it's = it is"],
+// ---------- Transitions ----------
+["TRN",`Early telescopes produced blurry, rainbow-fringed images because lenses bent different colors of light by different amounts. ${B} Isaac Newton designed a telescope that used a curved mirror, rather than a lens, to focus light.`,"",["Similarly,","Nevertheless,","To address this problem,","For example,"],2,"ประโยคแรกเป็นปัญหา ประโยคหลังเป็นวิธีแก้ → To address this problem"],
+["TRN",`Many people think of deserts as nearly lifeless places. ${B} the Sonoran Desert of North America supports more than 2,000 species of plants.`,"",["In fact,","Therefore,","Similarly,","Finally,"],0,"ประโยคหลังเป็นข้อเท็จจริงที่ค้านความเชื่อ → In fact"],
+["TRN",`The first draft of the treaty strongly favored the larger nation. ${B} the final version included several provisions protecting the smaller nation's fishing rights.`,"",["Thus,","By contrast,","For instance,","Likewise,"],1,"ร่างแรกเอื้อประเทศใหญ่ ↔ ฉบับสุดท้ายคุ้มครองประเทศเล็ก = ความขัดแย้ง → By contrast"],
+["TRN",`For years, Octavia E. Butler woke at 2 a.m. to write before going to a series of low-paying jobs. ${B} she published her first novel, <i>Patternmaster</i>, in 1976.`,"",["However,","For example,","In contrast,","Eventually,"],3,"หลังพยายามมานาน ในที่สุดก็ได้ตีพิมพ์ → Eventually (ลำดับเวลา)"],
+["TRN",`Some species of bamboo can grow nearly a meter in a single day. ${B} bamboo is a renewable building material that can be harvested far more frequently than timber from trees.`,"",["Nonetheless,","As a result,","Meanwhile,","Instead,"],1,"โตเร็วมาก → ผลคือเก็บเกี่ยวได้บ่อย → As a result (เหตุ-ผล)"],
+["TRN",`In one study, students who typed their lecture notes recorded more words than students who wrote by hand. ${B} the typists tended to transcribe lectures word for word rather than summarizing the ideas, and they remembered less on later tests.`,"",["However,","Consequently,","For instance,","Similarly,"],0,"บันทึกได้มากกว่า (ข้อดี) แต่จดคำต่อคำและจำได้น้อยกว่า (ข้อเสีย) → However"],
+["TRN",`Some critics praised the film for its striking visual style. Others, ${B} found its plot confusing and its pacing slow.`,"",["for example,","therefore,","however,","likewise,"],2,"Some critics praised ↔ Others found confusing = ความเห็นตรงข้าม → however"],
+["TRN",`The researchers first measured the acidity of the soil in each test plot. ${B} they added varying amounts of crushed limestone to each plot and tracked the changes over six months.`,"",["In contrast,","Next,","Nevertheless,","In other words,"],1,"ลำดับขั้นตอนการทดลอง first → Next"],
+["TRN",`The city's population tripled between 1950 and 1980. ${B} its water system, which had been designed for a much smaller population, was frequently overwhelmed.`,"",["Consequently,","Conversely,","For example,","Likewise,"],0,"ประชากรเพิ่ม (เหตุ) → ระบบน้ำรับไม่ไหว (ผล) → Consequently"],
+["TRN",`Hedy Lamarr was famous in the 1940s as a Hollywood film actress. ${B} she co-invented a frequency-hopping technology that later contributed to the development of Wi-Fi and Bluetooth.`,"",["Similarly,","Therefore,","Instead,","In addition,"],3,"เพิ่มข้อมูลอีกด้านของเธอ (นักแสดง + นักประดิษฐ์) → In addition ส่วน Instead ผิดเพราะเธอไม่ได้เลิกเป็นนักแสดง"],
+// ---------- Rhetorical Synthesis ----------
+["RHS",`${NOTES}<ul><li>The Svalbard Global Seed Vault is located in Norway.</li><li>It is built into a mountain on a remote Arctic island.</li><li>It stores more than one million seed samples from around the world.</li><li>Its purpose is to protect global crop diversity in case of war or natural disaster.</li></ul>`,"The student wants to emphasize the vault's purpose. Which choice most effectively uses relevant information from the notes to accomplish this goal?",["The Svalbard Global Seed Vault is built into a mountain on a remote Arctic island in Norway.","Located in Norway, the Svalbard Global Seed Vault stores more than one million seed samples.","The Svalbard Global Seed Vault, which holds more than one million seed samples, exists to protect the world's crop diversity in case of disaster.","A remote Arctic island in Norway is home to a vault built into a mountain."],2,"เป้าหมายคือ “จุดประสงค์” ของห้องนิรภัย มีเพียงตัวเลือกนี้ที่พูดถึงการปกป้องความหลากหลายของพืชผล ตัวเลือกอื่นเน้นที่ตั้งหรือจำนวน"],
+["RHS",`${NOTES}<ul><li>Ida B. Wells was a journalist born in 1862.</li><li>In 1892, she published <i>Southern Horrors</i>, a pamphlet documenting lynching in the United States.</li><li>She was one of the founders of the NAACP in 1909.</li></ul>`,"The student wants to introduce Ida B. Wells to an audience unfamiliar with her. Which choice most effectively uses relevant information from the notes to accomplish this goal?",["Wells's 1892 pamphlet remains her best-known work.","Ida B. Wells, a journalist born in 1862, documented lynching in her 1892 pamphlet <i>Southern Horrors</i> and later helped found the NAACP.","The NAACP was founded in 1909.","<i>Southern Horrors</i> was published in 1892, seventeen years before the NAACP was founded."],1,"การ “แนะนำ” ให้คนที่ไม่รู้จัก ต้องบอกว่าเธอเป็นใคร (journalist) และผลงานสำคัญ ตัวเลือกแรกใช้ “Wells's” เหมือนผู้อ่านรู้จักแล้ว"],
+["RHS",`${NOTES}<ul><li>Graphene is a single layer of carbon atoms.</li><li>By weight, it is about 200 times stronger than steel.</li><li>Aerogel is one of the lightest solid materials ever made.</li><li>Aerogel is an excellent thermal insulator.</li></ul>`,"The student wants to contrast the notable properties of the two materials. Which choice most effectively uses relevant information from the notes to accomplish this goal?",["Graphene, a single layer of carbon atoms, is about 200 times stronger than steel by weight.","Both graphene and aerogel are materials studied by scientists.","Aerogel is one of the lightest solids and is an excellent insulator.","Whereas graphene is notable for its exceptional strength, aerogel is known for being extremely light and highly insulating."],3,"“contrast” ต้องพูดถึงวัสดุทั้งสองและแสดงความต่าง (whereas) ตัวเลือกแรกและที่สามพูดถึงวัสดุเดียว ส่วน Both… บอกความเหมือน"],
+["RHS",`${NOTES}<ul><li>A 2019 study surveyed 500 urban gardeners.</li><li>78% of participants reported reduced stress.</li><li>64% reported eating more vegetables.</li><li>The study was conducted in three large cities.</li></ul>`,"The student wants to present the study's findings. Which choice most effectively uses relevant information from the notes to accomplish this goal?",["In a 2019 survey of 500 urban gardeners, 78% reported lower stress and 64% said they ate more vegetables.","A 2019 study surveyed 500 people who garden in cities.","Urban gardening is a popular activity in many large cities.","Researchers in 2019 wanted to learn more about urban gardeners in three cities."],0,"“findings” = ผลการศึกษา (78% และ 64%) ตัวเลือกอื่นบอกแค่ว่ามีการศึกษา ไม่ได้บอกผล"],
+["RHS",`${NOTES}<ul><li>The kākāpō is a flightless parrot found only in New Zealand.</li><li>It is nocturnal.</li><li>By 1995, only 51 kākāpō remained.</li><li>Intensive conservation efforts increased the population to about 250 birds by 2023.</li></ul>`,"The student wants to emphasize the success of conservation efforts. Which choice most effectively uses relevant information from the notes to accomplish this goal?",["The kākāpō, a nocturnal parrot, cannot fly.","The kākāpō is a flightless, nocturnal parrot found only in New Zealand.","Thanks to conservation efforts, the kākāpō population grew from just 51 birds in 1995 to about 250 by 2023.","In 1995, only 51 kākāpō remained in New Zealand."],2,"ต้องแสดง “ความสำเร็จ” → เทียบตัวเลขก่อน (51) และหลัง (~250) พร้อมระบุว่าเป็นผลจากการอนุรักษ์ ตัวเลือกสุดท้ายให้แค่ตัวเลขช่วงวิกฤต"]
+];
+
+const LET=["A","B","C","D"];
+const KEY="satrw100-v1";
+let S=load()||fresh();
+function fresh(){return{screen:"start",mode:"test",timerOn:true,ans:{},flag:{},strike:{},cur:0,left:7200,submitted:false,filter:"wrong"}}
+function load(){try{const r=localStorage.getItem(KEY);return r?JSON.parse(r):null}catch(e){return null}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=s=>document.querySelector(s);
+const app=$("#app"),timerEl=$("#timer"),topBtn=$("#topAction");
+const esc=s=>s;
+const fmt=s=>{s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")};
+const blanks=h=>h.replace(/______/g,'<span class="blank" aria-label="blank"></span>');
+const answeredCount=()=>Object.keys(S.ans).length;
+
+let tick=null;
+function startTimer(){clearInterval(tick);if(!S.timerOn||S.submitted){timerEl.hidden=true;return}
+  timerEl.hidden=false;paintTimer();tick=setInterval(()=>{if(S.left>0){S.left--;paintTimer();if(S.left%10===0)save()}},1000)}
+function paintTimer(){timerEl.textContent=S.left>0?fmt(S.left):"หมดเวลา";timerEl.classList.toggle("low",S.left<600)}
+
+function render(){
+  if(S.screen==="start")return renderStart();
+  if(S.screen==="results")return renderResults();
+  renderQ();
+}
+
+function renderStart(){
+  clearInterval(tick);timerEl.hidden=true;topBtn.hidden=true;
+  const counts={};Q.forEach(q=>counts[q[0]]=(counts[q[0]]||0)+1);
+  const resume=answeredCount()>0&&!S.submitted;
+  app.innerHTML=`<div class="wrap start">
+   <div style="display:grid;gap:12px">
+    <h1>Digital SAT<br>Reading &amp; Writing Mock Test</h1>
+    <p class="lede">ข้อสอบเสมือนจริง 100 ข้อ ครบทั้ง 4 domain ตามโครงสร้าง Digital SAT ข้อความสั้น ตัวเลือก 4 ข้อ มีเฉลยพร้อมคำอธิบายภาษาไทยทุกข้อ เวลาแนะนำ 120 นาที (ประมาณ 71 วินาทีต่อข้อ เท่ากับสนามจริง)</p>
+   </div>
+   <div class="grid2" role="radiogroup" aria-label="Mode">
+    <button class="mode ${S.mode==="test"?"on":""}" data-mode="test" role="radio" aria-checked="${S.mode==="test"}"><b>Test mode</b><span>ทำครบแล้วส่ง ดูคะแนนแยก domain และเฉลยตอนท้าย</span></button>
+    <button class="mode ${S.mode==="practice"?"on":""}" data-mode="practice" role="radio" aria-checked="${S.mode==="practice"}"><b>Practice mode</b><span>เลือกคำตอบแล้วเห็นเฉลยและคำอธิบายทันที</span></button>
+   </div>
+   <div class="row">
+    <label class="chk"><input type="checkbox" id="tOn" ${S.timerOn?"checked":""}> จับเวลา 120 นาที</label>
+   </div>
+   <div class="row">
+    <button class="btn primary" id="go">${resume?"ทำต่อ (ตอบแล้ว "+answeredCount()+" ข้อ)":"เริ่มทำข้อสอบ"}</button>
+    ${resume?'<button class="btn" id="reset">เริ่มใหม่ทั้งหมด</button>':""}
+   </div>
+   <div id="confirmHost"></div>
+   <section class="blueprint">
+    <h2>Blueprint · 100 ข้อ</h2>
+    <div class="bp">${Object.entries(SKILLS).map(([k,v])=>`<div><span>${v[0]}</span><em>${counts[k]}</em></div>`).join("")}</div>
+   </section>
+  </div>`;
+  app.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{S.mode=b.dataset.mode;save();renderStart()});
+  $("#tOn").onchange=e=>{S.timerOn=e.target.checked;save()};
+  $("#go").onclick=()=>{S.screen="test";save();window.scrollTo(0,0);render();startTimer()};
+  const r=$("#reset");if(r)r.onclick=()=>{$("#confirmHost").innerHTML=`<div class="confirm"><span>ล้างคำตอบทั้งหมดและเริ่มใหม่?</span><div class="row"><button class="btn primary" id="yes" style="background:var(--bad);border-color:var(--bad)">ล้างและเริ่มใหม่</button><button class="btn" id="no">ยกเลิก</button></div></div>`;
+    $("#yes").onclick=()=>{const m=S.mode,t=S.timerOn;S=fresh();S.mode=m;S.timerOn=t;save();renderStart()};$("#no").onclick=()=>$("#confirmHost").innerHTML=""};
+}
+
+function renderQ(){
+  const i=S.cur,q=Q[i],[sk,pass,qt,opts,ans,ex]=q;
+  const chosen=S.ans[i];const reveal=S.submitted||(S.mode==="practice"&&chosen!==undefined);
+  const st=S.strike[i]||[];
+  topBtn.hidden=S.submitted;topBtn.textContent="ส่งข้อสอบ";topBtn.onclick=()=>openSheet(true);
+  const optHtml=opts.map((o,k)=>{let c="";if(reveal){if(k===ans)c="ok";else if(k===chosen)c="no"}else if(k===chosen)c="sel";if(st.includes(k)&&!reveal)c+=" x";
+    return `<div class="opt ${c}"><button class="pick" data-k="${k}" ${reveal?"disabled":""} aria-pressed="${k===chosen}"><span class="bub">${LET[k]}</span><span class="otext">${o}</span></button>${reveal?"":`<button class="strike" data-s="${k}" aria-label="ตัดตัวเลือก ${LET[k]}" title="ตัดตัวเลือก">${st.includes(k)?"undo":"<s>"+LET[k]+"</s>"}</button>`}</div>`}).join("");
+  let exHtml="";
+  if(reveal){const right=chosen===ans;exHtml=`<div class="expl ${chosen===undefined?"":right?"ok":"no"}"><b>${chosen===undefined?"ไม่ได้ตอบ · ":right?"ถูกต้อง · ":"ยังไม่ถูก · "}เฉลย ${LET[ans]}</b>${ex}</div>`}
+  app.innerHTML=`<div class="wrap">
+   <div class="qhead"><span class="qnum">${i+1}</span><span class="skill">${SKILLS[sk][0]} · ${DOMAINS[SKILLS[sk][1]]}</span>
+    <button class="flag ${S.flag[i]?"on":""}" id="flag"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1v10M2 1.5h7l-1.6 2.5L9 6.5H2" fill="${S.flag[i]?"currentColor":"none"}" stroke="currentColor" stroke-width="1.3"/></svg>${S.flag[i]?"Marked":"Mark for review"}</button></div>
+   <div class="split">
+    <div class="passage">${pass.startsWith("<div")||pass.includes("<p>")?blanks(pass):"<p>"+blanks(pass)+"</p>"}</div>
+    <div class="qside"><p class="qtext">${qt||DEFQ[sk]}</p><div class="opts">${optHtml}</div>${exHtml}</div>
+   </div></div>`;
+  $("#foot")?.remove();
+  const f=document.createElement("div");f.className="foot";f.id="foot";
+  f.innerHTML=`<div class="wrap"><button class="btn" id="prev" ${i===0?"disabled":""}>Back</button><button class="navbtn" id="nav">Q ${i+1} / 100 ▴</button><button class="btn primary" id="next">${i===99?(S.submitted?"สรุปผล":"ทบทวน"):"Next"}</button></div>`;
+  document.body.appendChild(f);
+  app.querySelectorAll(".pick").forEach(b=>b.onclick=()=>{const k=+b.dataset.k;if(S.ans[i]===k&&S.mode==="test")delete S.ans[i];else S.ans[i]=k;
+    if(S.strike[i])S.strike[i]=S.strike[i].filter(x=>x!==k);save();renderQ()});
+  app.querySelectorAll(".strike").forEach(b=>b.onclick=()=>{const k=+b.dataset.s;const a=S.strike[i]||[];S.strike[i]=a.includes(k)?a.filter(x=>x!==k):[...a,k];if(S.ans[i]===k)delete S.ans[i];save();renderQ()});
+  $("#flag").onclick=()=>{S.flag[i]=!S.flag[i];if(!S.flag[i])delete S.flag[i];save();renderQ()};
+  $("#prev").onclick=()=>go(i-1);
+  $("#next").onclick=()=>{if(i===99){S.submitted?showResults():openSheet(false)}else go(i+1)};
+  $("#nav").onclick=()=>openSheet(false);
+}
+function go(n){S.cur=Math.max(0,Math.min(99,n));save();window.scrollTo(0,0);renderQ()}
+
+function openSheet(submitAsk){
+  const host=$("#sheetHost");
+  const groups={};Q.forEach((q,i)=>{const d=SKILLS[q[0]][1];(groups[d]=groups[d]||[]).push(i)});
+  const cell=i=>{let c="cell";if(S.submitted){c+=S.ans[i]===Q[i][4]?" ok":" no"}else if(S.ans[i]!==undefined)c+=" ans";if(S.flag[i])c+=" fl";if(i===S.cur)c+=" cur";return `<button class="${c}" data-i="${i}" aria-label="ข้อ ${i+1}">${i+1}</button>`};
+  const un=100-answeredCount(),fl=Object.keys(S.flag).length;
+  host.innerHTML=`<div class="sheet" id="sh"><div class="panel" role="dialog" aria-label="Question navigator">
+   <div class="panel-h"><h3>${S.submitted?"ผลรายข้อ":"ภาพรวมข้อสอบ"}</h3><button class="btn ghost" id="close">ปิด</button></div>
+   <div class="legend">${S.submitted?'<span><i style="background:var(--good-soft);border-color:var(--good)"></i>ถูก</span><span><i style="background:var(--bad-soft);border-color:var(--bad)"></i>ผิด/ไม่ตอบ</span>':`<span><i style="background:var(--accent-soft);border-color:var(--accent)"></i>ตอบแล้ว ${answeredCount()}</span><span><i></i>ยังไม่ตอบ ${un}</span><span><i style="background:var(--mark);border-color:var(--mark);border-radius:50%"></i>Marked ${fl}</span>`}</div>
+   ${Object.entries(groups).map(([d,ids])=>`<div class="sec-t">${DOMAINS[d]}</div><div class="cells">${ids.map(cell).join("")}</div>`).join("")}
+   ${S.submitted?`<div class="row" style="margin-top:16px"><button class="btn primary" id="toRes">กลับไปหน้าสรุปผล</button></div>`:`<div class="${submitAsk?"confirm":""}" style="margin-top:16px;display:grid;gap:10px">${submitAsk?`<span>${un>0?`ยังไม่ได้ตอบ ${un} ข้อ `:""}ส่งข้อสอบตอนนี้เลยไหม? ส่งแล้วแก้คำตอบไม่ได้</span>`:""}<div class="row"><button class="btn primary" id="sub">${submitAsk?"ยืนยันส่งข้อสอบ":"ส่งข้อสอบ"}</button></div></div>`}
+  </div></div>`;
+  $("#sh").onclick=e=>{if(e.target.id==="sh")host.innerHTML=""};
+  $("#close").onclick=()=>host.innerHTML="";
+  host.querySelectorAll(".cell").forEach(b=>b.onclick=()=>{host.innerHTML="";if(S.screen!=="test"){S.screen="test";}go(+b.dataset.i)});
+  const sub=$("#sub");if(sub)sub.onclick=()=>{if(!submitAsk)return openSheet(true);S.submitted=true;host.innerHTML="";save();clearInterval(tick);timerEl.hidden=true;showResults()};
+  const tr=$("#toRes");if(tr)tr.onclick=()=>{host.innerHTML="";showResults()};
+}
+
+function showResults(){S.screen="results";save();window.scrollTo(0,0);render()}
+function renderResults(){
+  $("#foot")?.remove();topBtn.hidden=true;timerEl.hidden=true;
+  let correct=0;const dom={},sk={};
+  Q.forEach((q,i)=>{const ok=S.ans[i]===q[4];if(ok)correct++;const d=SKILLS[q[0]][1];
+    dom[d]=dom[d]||[0,0];dom[d][1]++;if(ok)dom[d][0]++;sk[q[0]]=sk[q[0]]||[0,0];sk[q[0]][1]++;if(ok)sk[q[0]][0]++});
+  const pill=p=>p>=80?'<span class="pill hi">แข็งแรง</span>':p>=60?'<span class="pill mid">พอใช้</span>':'<span class="pill lo">ควรฝึก</span>';
+  const used=S.timerOn?fmt(7200-S.left):null;
+  const list=Q.map((q,i)=>({i,ok:S.ans[i]===q[4],un:S.ans[i]===undefined,fl:!!S.flag[i]})).filter(r=>S.filter==="all"?true:S.filter==="wrong"?!r.ok:r.fl);
+  app.innerHTML=`<div class="wrap res">
+   <div style="display:grid;gap:6px">
+    <h2 class="sh">ผลสอบ · ${S.mode==="test"?"Test mode":"Practice mode"}${used?" · ใช้เวลา "+used:""}</h2>
+    <div class="score"><span class="big">${correct}</span><span class="of">/ 100 ข้อ · ${correct}%</span></div>
+    <p style="margin:0;color:var(--muted)">ตอบ ${answeredCount()} ข้อ · ผิด ${answeredCount()-correct} ข้อ · ไม่ได้ตอบ ${100-answeredCount()} ข้อ</p>
+   </div>
+   <section><h2 class="sh">แยกตาม Domain</h2><div class="domains">${Object.entries(DOMAINS).map(([d,n])=>{const [a,t]=dom[d];const p=Math.round(a/t*100);return `<div class="dom"><div class="dom-top"><span>${n}</span><span>${a}/${t} · ${p}%</span></div><div class="track"><i style="width:${p}%"></i></div></div>`}).join("")}</div></section>
+   <section><h2 class="sh">แยกตามทักษะ</h2><div class="skills"><table><tr><th>Skill</th><th style="text-align:right">ถูก</th><th>ระดับ</th></tr>${Object.entries(SKILLS).map(([k,v])=>{const [a,t]=sk[k];const p=Math.round(a/t*100);return `<tr><td>${v[0]}</td><td class="n">${a}/${t}</td><td>${pill(p)}</td></tr>`}).join("")}</table></div></section>
+   <section><h2 class="sh">ทบทวนพร้อมคำอธิบาย</h2>
+    <div class="seg">${[["wrong","ผิด/ไม่ตอบ"],["flag","Marked"],["all","ทั้งหมด"]].map(([k,l])=>`<button data-f="${k}" class="${S.filter===k?"on":""}">${l}</button>`).join("")}</div>
+    <div class="rlist">${list.length?list.map(r=>{const q=Q[r.i];const plain=q[1].replace(/<[^>]+>/g," ").replace(/______/g,"___").replace(/\s+/g," ").trim();
+      return `<button class="ritem" data-i="${r.i}"><span class="qnum">${r.i+1}</span><span class="rt"><div>${SKILLS[q[0]][0]}</div><p>${plain}</p></span><span class="mk ${r.ok?"ok":"no"}">${r.un?"–":LET[S.ans[r.i]]} → ${LET[q[4]]}</span></button>`}).join(""):'<p style="color:var(--muted)">ไม่มีข้อในหมวดนี้</p>'}</div>
+   </section>
+   <div class="row"><button class="btn" id="again">ทำข้อสอบใหม่</button></div>
+   <div id="confirmHost"></div>
+  </div>`;
+  app.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{S.filter=b.dataset.f;save();renderResults()});
+  app.querySelectorAll(".ritem").forEach(b=>b.onclick=()=>{S.screen="test";S.cur=+b.dataset.i;save();window.scrollTo(0,0);renderQ()});
+  $("#again").onclick=()=>{$("#confirmHost").innerHTML=`<div class="confirm"><span>ล้างคำตอบทั้งหมดและเริ่มใหม่?</span><div class="row"><button class="btn primary" id="yes" style="background:var(--bad);border-color:var(--bad)">ล้างและเริ่มใหม่</button><button class="btn" id="no">ยกเลิก</button></div></div>`;
+    $("#yes").onclick=()=>{const m=S.mode,t=S.timerOn;S=fresh();S.mode=m;S.timerOn=t;save();render()};$("#no").onclick=()=>$("#confirmHost").innerHTML=""};
+}
+
+render();if(S.screen==="test")startTimer();
+</script>
+
+</body></html>
